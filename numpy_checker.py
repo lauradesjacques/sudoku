@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 
 grid = np.random.randint(1, 9, (9, 9))
 
@@ -11,15 +10,14 @@ grid_ok = [[8, 3, 5, 4, 1, 6, 9, 2, 7], [2, 9, 6, 8, 5, 7, 4, 3, 1],
 
 
 def check_row():
-    for r in grid:
-        if sum(r) == 45:
-            order = sorted(r)
-            order_string = ''.join(map(str, order))
-            print(str(r) + str(order_string) + " ligne fausse")
-            if order_string == '123456789':
-                print("cette ligne est correct")
-        else:
-            print(str(r) + "Ligne fausse.Il y a des chiffres qui se repete")
+    for r in grid_ok:
+        order = sorted(r)
+        order_string = ''.join(map(str, order))
+        print(str(r) + str(order_string))
+        if order_string == '123456789':
+            print("cette ligne est correct")
+    else:
+        print(str(r) + "Il y a des chiffres qui se repete")
 
 
 def check_column():
@@ -32,7 +30,11 @@ def check_column():
             print(str(c) + str(order_col_str)+" ligne fausse")
             if order_col_str == '123456789':
                 print("cette colonne est correct")
-        else:
-            print(str(c) + "Colonne fausse.Il y a des chiffres qui se repete")
+                return True
+    else:
+        print(str(c) + "Colonne fausse.Il y a des chiffres qui se repete")
 
-check_column()
+
+
+
+check_row()
